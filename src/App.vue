@@ -10,15 +10,7 @@
     <country-detail :country="selectedCountry"></country-detail>
 
     <countries-list :countries='countries'></countries-list>
-
-    <div v-if="selectedOperation && amount && baseCurrency" id="result-display">
-          <h2 v-if="selectedOperation === 'Convert from Euros'">{{amount}} Euros = {{convertFromEuros | twoDecimalPlaces}} {{baseCurrency}}</h2>
-          <h2 v-if="selectedOperation === 'Convert to Euros'">{{amount}} {{baseCurrency}} = {{convertToEuros | twoDecimalPlaces}} Euros</h2>
-          <h2 v-if="selectedOperation === 'Convert Cross Currency' && convertedCurrency">{{amount}} {{baseCurrency}} = {{convertCrossCurrency | twoDecimalPlaces }} {{convertedCurrency}}</h2>
-        </div>
-
-
-
+ 
   </div>
 </template>
 
