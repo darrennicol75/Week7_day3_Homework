@@ -1,7 +1,24 @@
 <template>
   <div id="app">
+
+    <select v-model="selectedCountry">
+        <option disabled value="">Select a Country</option>
+        <option v-for="country in countries">{{ country.name }}</option>
+      <country-detail :country="selectedCountry"></country-detail>
+    </select>
+
+    <country-detail :country="selectedCountry"></country-detail>
+
     <countries-list :countries='countries'></countries-list>
-    <country-detail :country='selectedCountry'></country-detail>
+
+    <div v-if="selectedOperation && amount && baseCurrency" id="result-display">
+          <h2 v-if="selectedOperation === 'Convert from Euros'">{{amount}} Euros = {{convertFromEuros | twoDecimalPlaces}} {{baseCurrency}}</h2>
+          <h2 v-if="selectedOperation === 'Convert to Euros'">{{amount}} {{baseCurrency}} = {{convertToEuros | twoDecimalPlaces}} Euros</h2>
+          <h2 v-if="selectedOperation === 'Convert Cross Currency' && convertedCurrency">{{amount}} {{baseCurrency}} = {{convertCrossCurrency | twoDecimalPlaces }} {{convertedCurrency}}</h2>
+        </div>
+
+
+
   </div>
 </template>
 
